@@ -23,18 +23,13 @@ class Market
     end
   end
 
-  # def total_inventory
-  #   #vendors have inventories
-  #   big_daddy_inventory = Hash.new({:quantity => 0, :vendors => []})
-  #   @vendors.map do |vendor|
-  #     vendor.inventory.each do |item, amount|
-  #       big_daddy_inventory[item] unless big_daddy_inventory.has_key?(item)
-  #       big_daddy_inventory[item][:quantity] += amount unless big_daddy_inventory.has_key?(item)
-  #       big_daddy_inventory[item][:vendors] << vendor unless big_daddy_inventory[item][:vendors].include?(vendor) 
-  #     end
-  #   end
-  #   big_daddy_inventory
-  # end
+  def sorted_item_list
+    @vendors.flat_map do |vendor|
+      vendor.inventory.map do |item, _|
+        item.name
+      end
+    end.uniq.sort
+  end
 
   def total_inventory  
     errythang = {}
