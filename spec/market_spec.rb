@@ -68,4 +68,30 @@ RSpec.describe Market do
       expect(@market.sorted_item_list).to eq(['Banana Nice Cream', 'Peach', 'Peach-Raspberry Nice Cream', 'Tomato'])
     end
   end
+
+  describe 'total inventory' do 
+    it '#total_inventory' do 
+      @market.add_vendor(@vendor1)
+      @market.add_vendor(@vendor2)
+      @market.add_vendor(@vendor3)
+      expect(@market.total_inventory).to eq({
+        @item1 => {
+          quantity: 100,
+          vendors: [@vendor1, @vendor3]
+        }, 
+        @item2 => {
+          quantity: 7,
+          vendors: [@vendor1]
+        },
+        @item3 => {
+          quantity: 25,
+          vendors: [@vendor2]
+        },
+        @item4 => {
+          quantity: 50,
+          vendors: [@vendor2]
+        }
+      })
+    end
+  end
 end
