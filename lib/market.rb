@@ -42,5 +42,13 @@ class Market
     end
     errythang
   end
-
+  
+  def overstocked_items
+    too_many_items = []
+    total_inventory.each do |item, info|
+      too_many_items << item if info[:quantity] > 50 && 
+      info[:vendors].length > 1
+    end
+    too_many_items
+  end
 end
