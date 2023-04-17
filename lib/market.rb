@@ -55,4 +55,18 @@ class Market
     end
     too_many_items
   end
+
+  def sell(item, amount)
+    if total_inventory[item][:quantity] < amount
+      false
+    else
+      vendors_that_sell(item).each do |vendor|
+        saved_amount = vendor.inventory[item]
+        vendor.inventory[item] -= amount
+        amount -= saved_amount
+        vendor.inventory[item] = 0 unless vendor.inventory[item] > 0
+      end
+      true
+    end
+  end
 end
