@@ -101,8 +101,6 @@ RSpec.describe Market do
       @market.add_vendor(@vendor2)
       @market.add_vendor(@vendor3)
       expect(@market.overstocked_items).to eq([@item1])
-      @vendor3.stock(@item2, 50)
-      expect(@market.overstocked_items).to eq([@item1, @item2])
     end
 
     it '#overstocked_items if > 1 item' do 
