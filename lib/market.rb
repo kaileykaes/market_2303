@@ -22,5 +22,4 @@ class Market
       vendor.inventory.include?(item)
     end
   end
-
 end
