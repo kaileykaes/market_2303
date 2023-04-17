@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Market do
   before(:each) do
+    allow(Date).to receive(:today).and_return Date.new(1993, 7, 1)
     @market = Market.new("South Pearl Street Farmers Market")
     @vendor1 = Vendor.new("Rocky Mountain Fresh")
     @vendor2 = Vendor.new("Ba-Nom-a-Nom")
@@ -25,6 +26,7 @@ RSpec.describe Market do
     it 'has attributes' do 
       expect(@market.name).to eq('South Pearl Street Farmers Market')
       expect(@market.vendors).to eq([])
+      expect(@market.date).to eq('07/01/1993')
     end
   end
 
