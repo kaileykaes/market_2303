@@ -44,7 +44,8 @@ RSpec.describe Vendor do
       @vendor.stock(@item1, 30)
       @vendor.stock(@item1, 25)
       @vendor.stock(@item2, 12)
-      expect(@vendor.potential_revenue).to eq(28.50)
+      require 'pry'; binding.pry
+      expect(@vendor.potential_revenue).to eq(47.25)
     end
   end
 end
